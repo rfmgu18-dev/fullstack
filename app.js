@@ -8,7 +8,6 @@ const app = express();
 
     try {
         const conection = await mongoose.connect(process.env.MONGO_URI_TEST);
-        console.log(conection);
         
         console.log("Conectado a MongoDB exitosamente");
         
@@ -18,3 +17,5 @@ const app = express();
         
     }
 } )();
+
+module.exports = app.js;
