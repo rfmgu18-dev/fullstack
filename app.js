@@ -20,21 +20,26 @@ const app = express();
     }
 })();
 
-// Middleware para leer JSON
+// 1. MIDDLEWARES GLOBAL
 app.use(cors());
 app.use(express.json());
 app.use(cookieParser());
+app.use(morgan('tiny')); // Se coloca arriba para registrar todas las peticiones
 
-// 1. RUTAS BACKEND
+// 2. RUTAS BACKEND (API)
 app.use('/api/users', usersRouter);
 
-// 2. RUTAS FRONTEND / ESTÁTICOS
-app.use('/', express.static(path.resolve('PaginaPrincipal')));
-app.use('/registro', express.static(path.resolve('PaginaPrincipal', 'registro')));
-app.use('/imagenes', express.static(path.resolve('img')));
+// 3. RUTAS FRONTEND Y ARCHIVOS ESTÁTICOS
+app.use('/', express.static(path.join(__dirname, 'PaginaPrincipal')));
+app.use('/registro', express.static(path.join(__dirname, 'PaginaPrincipal', 'registro')));
+app.use('/imagenes', express.static(path.join(__dirname, 'img')));
 
-app.use(morgan('tiny'));
+// Estáticos y vista para la verificación de correo
+app.use('/verify', express.static(path.join(__dirname, 'PaginaPrincipal', 'verify')));
+app.get('/verify/:id/:token', (req, res) => {
+    res.sendFile(path.join(__dirname, 'PaginaPrincipal', 'verify', 'index.html'));
+});
 
+console.log('PAGE_URL:', PAGE_URL);
 
-console.log(PAGE_URL);
 module.exports = app;
