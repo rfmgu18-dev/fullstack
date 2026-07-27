@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon index.js"
+    "dev": "cross-env NODE_ENV=dev nodemon index.js"
   },
   "keywords": [],
   "author": "",
@@ -12,10 +12,19 @@
   "type": "commonjs",
   "dependencies": {
     "@tailwindcss/vite": "^4.3.3",
+    "bcrypt": "^6.0.0",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.6",
     "dotenv": "^17.4.2",
     "express": "^5.2.1",
+    "jsonwebtoken": "^9.0.3",
     "mongoose": "^9.7.4",
+    "morgan": "^1.11.0",
+    "nodemailer": "^9.0.3",
     "nodemon": "^3.1.14",
     "tailwindcss": "^4.3.3"
+  },
+  "devDependencies": {
+    "cross-env": "^10.1.0"
   }
 }

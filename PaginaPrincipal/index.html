@@ -7,21 +7,38 @@
   <title>ToDoApp Landing Page</title>
 </head>
 <body class="bg-gray-50 font-sans min-h-screen flex flex-col justify-between">
-    <nav class="fixed top-0 right-0 left-0 bg-slate-900 h-17">
-      <div class="max-w-7xl bg-indigo-700 h-17 mx-auto flex items-center px-4 justify-between">
-        <p class="font-bold text-xl text-white">TodoApp</p>
-
-        <!-- Version Movil -->
-         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 md:hidden ">
-           <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-           </svg>
-
-        <!-- Version Escritorio -->
-           <div class="hidden md:flex flex-row gap-4">
-            <a href="/login/" class="transition ease-in-out text-white font-bold hover:bg-indigo-400 py-2 px-4 rounded-lg">Login</a>
-            <a href="/signup/" class="transition ease-in-out text-white font-bold bg-indigo-500 hover:bg-indigo-600 py-2 px-4 rounded-lg">Registro</a>
-          </div>
-      </div>
+    <nav id="navbar" class="fixed top-0 right-0 left-0 bg-slate-900 h-17">
     </nav>
+    <main class="min-h-screen flex items-center justify-center px-6 pt-16">
+    <div class="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16 max-w-5xl mx-auto">
+    
+    <!-- Columna Izquierda: Título Gigante -->
+    <div class="w-full md:w-1/2 flex justify-center md:justify-start">
+      <h1 class="text-indigo-600 font-black text-6xl sm:text-7xl md:text-8xl lg:text-7xl tracking-tight leading-none">
+        TodoApp
+      </h1>
+    </div>
+
+    <!-- Columna Derecha: Texto + Botones -->
+    <div class="w-full md:w-1/2 flex flex-col gap-6">
+      <!-- Párrafo justificado -->
+      <p class="text-gray-700 text-justify text-base md:text-lg leading-relaxed">
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Distinctio, quod quam similique atque aliquid nobis, debitis perferendis facilis quaerat quas eligendi at harum dolores mollitia sint earum doloremque? Doloremque, consequatur?
+      </p>
+
+      <!-- Botones compactos alineados a la izquierda -->
+      <div class="flex gap-4">
+        <a href="/login/" class="bg-slate-700 hover:bg-slate-800 text-white font-bold py-2.5 px-8 rounded-lg transition duration-200 text-center">
+          Login
+        </a>
+        <a href="/registro/" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2.5 px-8 rounded-lg transition duration-200 text-center">
+          Registro
+        </a>
+      </div>
+    </div>
+
+  </div>
+</main>
+    <script src="./componentes/nav.js"></script>
 </body>
 </html>
