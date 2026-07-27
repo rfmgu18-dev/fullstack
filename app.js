@@ -9,7 +9,6 @@ const usersRouter = require("./controllers/users");
 const { PAGE_URL } = require('./config.js');
 
 const app = express();
-
 // Conexión a Base de Datos
 (async () => {
     try {
