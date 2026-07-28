@@ -4,7 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Login</title>
-    <!-- Nota: estilos migrados a utilidades Tailwind en los elementos -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   </head>
@@ -34,7 +33,7 @@
             placeholder="Ingrese su correo."
             class="rounded-lg p-2 bg-zinc-100 focus:outline-indigo-700"
           />
-          <p class="text-[0.78rem] text-zinc-900 leading-[1.3] font-medium m-0 dark:text-zinc-200">El correo debe seguir el formato: ejemplo@gmail.com</p>
+          <p class="information text-sm text-zinc-900/60 leading-5 m-0">El correo debe seguir el formato: ejemplo@gmail.com</p>
         </div>
         <div class="flex flex-col gap-2">
           <label class="font-bold" for="password"
@@ -48,7 +47,7 @@
             placeholder="Ingrese tu contraseña."
             class="rounded-lg p-2 bg-zinc-100 focus:outline-indigo-700"
           />
-          <p class="text-[0.78rem] text-zinc-900 leading-[1.3] font-medium m-0 dark:text-zinc-200">Debe contener al menos una mayúscula, una minúscula y un número. Mínimo 6 caracteres, máximo 24 caracteres.</p>
+          <p class="information text-sm text-zinc-900/60 leading-5 m-0">Debe contener al menos una mayúscula, una minúscula y un número. Mínimo 6 caracteres, máximo 24 caracteres.</p>
         </div>
         <button
           id="boton"
