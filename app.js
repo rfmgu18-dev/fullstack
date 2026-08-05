@@ -32,6 +32,7 @@ app.use('/api/users', usersRouter);
 app.use('/', express.static(path.join(__dirname, 'PaginaPrincipal')));
 app.use('/registro', express.static(path.join(__dirname, 'PaginaPrincipal', 'registro')));
 app.use('/imagenes', express.static(path.join(__dirname, 'img')));
+app.use('/login', express.static(path.join(__dirname, 'login')));
 
 // Estáticos y vista para la verificación de correo
 app.use('/verify', express.static(path.join(__dirname, 'PaginaPrincipal', 'verify')));
