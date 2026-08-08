@@ -6,13 +6,13 @@ const cors = require('cors');
 const cookieParser = require('cookie-parser');
 const morgan = require('morgan');
 const usersRouter = require("./controllers/users");
-const { PAGE_URL } = require('./config.js');
+const { PAGE_URL, MONGO_URI } = require('./config.js');
 
 const app = express();
 // Conexión a Base de Datos
 (async () => {
     try {
-        await mongoose.connect(process.env.MONGO_URI_TEST);
+        await mongoose.connect(MONGO_URI);
         console.log("Conectado a MongoDB exitosamente");
     } catch (error) {
         console.log("Error de conexión:", error);
@@ -32,6 +32,7 @@ app.use('/api/users', usersRouter);
 app.use('/', express.static(path.join(__dirname, 'PaginaPrincipal')));
 app.use('/registro', express.static(path.join(__dirname, 'PaginaPrincipal', 'registro')));
 app.use('/imagenes', express.static(path.join(__dirname, 'img')));
+app.use('/login', express.static(path.join(__dirname, 'login')));
 
 // Estáticos y vista para la verificación de correo
 app.use('/verify', express.static(path.join(__dirname, 'PaginaPrincipal', 'verify')));
