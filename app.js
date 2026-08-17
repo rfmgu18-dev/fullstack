@@ -6,19 +6,19 @@ const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const morgan = require("morgan");
 const usersRouter = require("./controllers/users");
-const { PAGE_URL } = require("./config.js");
+const { PAGE_URL, MONGO_URI } = require("./config.js");
 const todosRouter = require("./controllers/todos.js");
 const { userExtractor } = require("./middleware/auth.js");
 
 const app = express();
 // Conexión a Base de Datos
 (async () => {
-  try {
-    await mongoose.connect(process.env.MONGO_URI_TEST);
-    console.log("Conectado a MongoDB exitosamente");
-  } catch (error) {
-    console.log("Error de conexión:", error);
-  }
+    try {
+        await mongoose.connect(process.env.MONGO_URI_TEST);
+        console.log("Conectado a MongoDB exitosamente");
+    } catch (error) {
+        console.log("Error de conexión:", error);
+    }
 })();
 
 // 1. MIDDLEWARES GLOBAL
@@ -39,6 +39,7 @@ app.use(
 );
 app.use("/imagenes", express.static(path.join(__dirname, "img")));
 app.use("/todos", express.static(path.resolve("views", "todos")));
+app.use('/login', express.static(path.join(__dirname, 'login')));
 
 // Estáticos y vista para la verificación de correo
 app.use(
