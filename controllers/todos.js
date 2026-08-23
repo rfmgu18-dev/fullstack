@@ -34,6 +34,8 @@ todosRouter.delete("/:id", async (request, response) => {
 });
 
 todosRouter.patch("/:id", async (request, response) => {
+  console.log("usuario intentando actualizar:", request.user);
+
   const user = request.user;
 
   const { checked } = request.body;

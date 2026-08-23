@@ -29,7 +29,7 @@ app.use(morgan("tiny")); // Se coloca arriba para registrar todas las peticiones
 
 // 2. RUTAS BACKEND (API)
 app.use("/api/users", usersRouter);
-app.use("/api/todos", userExtractor, todosRouterRouter);
+app.use("/api/todos", userExtractor, todosRouter);
 
 // 3. RUTAS FRONTEND Y ARCHIVOS ESTÁTICOS
 app.use("/", express.static(path.join(__dirname, "PaginaPrincipal")));
