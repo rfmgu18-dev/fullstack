@@ -24,9 +24,6 @@ usersRouter.post("/", async (request, response) => {
       .json({ error: "El Email ya se encuentra en uso" });
   }
 
-  // =======================================================
-  // VERIFICACIÓN DE EMAIL CON ABSTRACT EMAIL REPUTATION API
-  // =======================================================
   try {
     const apiKey = process.env.ABSTRACT_API_KEY;
     const url = `https://emailreputation.abstractapi.com/v1/?api_key=${apiKey}&email=${email}`;
@@ -60,38 +57,16 @@ usersRouter.post("/", async (request, response) => {
 
   await newUser.save();
 
-  // const token = jwt.sign({ id: savedUser.id }, process.env.ACCESS_TOKEN_SECRET, {
-  //   expiresIn: '1m'
-  // });
-
-  /* 
-  // NODEMAILER DESACTIVADO TEMPORALMENTE
-  const transporter = nodemailer.createTransport({
-    host: "smtp.gmail.com",
-    port: 465,
-    secure: true,
-    auth: {
-      user: process.env.EMAIL_USER,
-      pass: process.env.EMAIL_PASS,
-    },
-  });
-
-  const info = await transporter.sendMail({
-    from: process.env.EMAIL_USER,
-    to: savedUser.email,
-    subject: "Verificacion de usuario",
-    html: `<a href="${PAGE_URL}/verify/${savedUser.id}/${token}">Verificar Correo</a>`,
-  });
-  */
-
   return response.status(201).json("Usuario creado, verifica tu correo");
 });
 
 usersRouter.post("/login", async (request, response) => {
   const { email, password } = request.body;
+  console.log("Intento de login con email:", email);
 
   // 1. Buscar si el usuario existe
   const user = await User.findOne({ email });
+  console.log("Usuario encontrado:", user ? "SI" : "NO");
   if (!user) {
     return response
       .status(400)
@@ -100,6 +75,7 @@ usersRouter.post("/login", async (request, response) => {
 
   // 2. Verificar la contraseña
   const passwordCorrect = await bcrypt.compare(password, user.passwordHash);
+  console.log("Contraseña correcta:", passwordCorrect);
   if (!passwordCorrect) {
     return response
       .status(400)
@@ -127,61 +103,5 @@ usersRouter.post("/login", async (request, response) => {
     .status(200)
     .json({ message: "Sesión iniciada correctamente" });
 });
-
-// usersRouter.patch('/:id/:token', async (request, response) => {
-//   const { id, token } = request.params;
-
-//   try {
-//     // 1. Verificar el token
-//     const decodedToken = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
-//     const decodedId = decodedToken.id;
-//     await User.findByIdAndUpdate(decodedId, { verified: true });
-
-//     // 2. Marcar al usuario como verificado en la base de datos
-//     await User.findByIdAndUpdate(decodedId, { verified: true });
-
-//     return response.status(200).json({ message: 'Usuario verificado exitosamente.' });
-
-//   } catch (error) {
-//     console.log('El token expiró o es inválido. Generando uno nuevo...');
-
-//     // 4. Buscar al usuario
-//     const user = await User.findById(id);
-
-//     if (!user) {
-//       return response.status(404).json({ error: 'Usuario no encontrado.' });
-//     }
-
-//     // 5. Firmar un nuevo token
-//     const newToken = jwt.sign({ id: id }, process.env.ACCESS_TOKEN_SECRET, {
-//       expiresIn: '1m'
-//     });
-
-//     /*
-//     // NODEMAILER DESACTIVADO
-//     const transporter = nodemailer.createTransport({
-//       host: "smtp.gmail.com",
-//       port: 465,
-//       secure: true,
-//       auth: {
-//         user: process.env.EMAIL_USER,
-//         pass: process.env.EMAIL_PASS,
-//       },
-//     });
-
-//     // 7. Enviar correo usando newToken
-//     await transporter.sendMail({
-//       from: process.env.EMAIL_USER,
-//       to: user.email,
-//       subject: "Verificacion de usuario",
-//       html: `<a href="${PAGE_URL}/verify/${id}/${newToken}">Verificar Correo</a>`,
-//     });
-//     */
-
-//     return response.status(400).json({
-//       error: 'El link ya expiró. Se ha enviado un nuevo link de verificación a su correo.'
-//     });
-//   }
-// });
 
 module.exports = usersRouter;

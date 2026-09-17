@@ -49,6 +49,8 @@ if(window.location.pathname === '/'){
     createNavHome();
 }else if (window.location.pathname === '/registro/'){
   createNavRegistro();
+}else if (window.location.pathname === '/login/'){
+  createNavRegistro();
 }
 
 

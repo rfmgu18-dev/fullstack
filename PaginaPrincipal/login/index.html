@@ -6,6 +6,18 @@
     <title>Login</title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <style>
+      .true {
+        outline: 2px solid green;
+      }
+      .false {
+        outline: 2px solid red;
+      }
+      .show-information {
+        color: red;
+        font-weight: bold;
+      }
+    </style>
   </head>
   <body class="bg-zinc-50">
     <nav
@@ -15,7 +27,7 @@
       class="flex pt-16 h-screen max-w-7xl mx-auto justify-center items-center px-4"
     >
       <div class="hidden lg:flex w-2/4 justify-center items-center px-4">
-        <img class="w-3/4" src="multimedia/login img.jpg" alt="imagen de login" />
+        <img class="w-3/4" src="/imagenes/welcome.svg" alt="imagen de login" />
       </div>
       <form
         id="form"
