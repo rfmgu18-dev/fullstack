@@ -3,7 +3,7 @@ const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const CONTRASEÑA_REGEX =
   /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,24}$/;
 
-//Selectores
+// Selectores
 const emailInput = document.querySelector("#email");
 const contraseñaInput = document.querySelector("#password");
 const Boton = document.querySelector("#boton");
