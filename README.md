@@ -27,5 +27,4 @@ Aplicación de gestión de tareas (ToDo) completa con sistema de autenticación 
 - Tailwind CSS para estilos
 - Axios para peticiones HTTP
 - Diseño responsivo
-
-## Estructura del proyecto
+  
